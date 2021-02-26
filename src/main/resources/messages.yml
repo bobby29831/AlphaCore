@@ -1,7 +1,7 @@
 spawn:
   set:
     text:
-      - "&aSpawn has been set to $&a(&(#70ff91)~{0}&a, &(#70ff91)~{1}&a, &(#70ff91)~{2}&a)$."
+      - "&aSpawn has been set to $&a(&(#cccccc)~{0}&a, &(#cccccc)~{1}&a, &(#cccccc)~{2}&a)$."
     extras:
       1:
         tooltip:
@@ -32,3 +32,26 @@ reload:
       1:
         tooltip:
           - "&cCheck console for details!"
+
+warp:
+  create:
+    slotselected:
+      text:
+        - "&a&lSelected Slot: &f{0}"
+        - "&7Please input a name in chat..."
+    nameselected:
+      text:
+        - "&a&lSelected Name: &f{0}"
+    materialselected:
+      text:
+        - "&a&lSelected Material: &f{0}"
+        - "$&7Finished warp creation!$"
+      extras:
+        1:
+          tooltip:
+            - "&aTry &e/warp&a!"
+          action: "SUGGEST"
+          content: "/warp"
+  teleport:
+    text:
+      - "&7Teleporting to &9{0}&7..."

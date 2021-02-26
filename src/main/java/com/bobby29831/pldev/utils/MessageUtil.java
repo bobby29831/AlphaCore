@@ -42,6 +42,18 @@ public class MessageUtil {
 
     public Message spawnNotFound = Message.fromConfigurationSection(getLangConfiguration().getSection("spawn.notfound"), "general.help")
             .build();
+
+
+    // Creating Warps
+    public Message slotSelected = Message.fromConfigurationSection(getLangConfiguration().getSection("warp.create.slotselected"), "reload.failure")
+            .build();
+    public Message nameSelected = Message.fromConfigurationSection(getLangConfiguration().getSection("warp.create.nameselected"), "reload.failure")
+            .build();
+    public Message materialSelected = Message.fromConfigurationSection(getLangConfiguration().getSection("warp.create.materialselected"), "reload.failure")
+            .build();
+    public Message warpTeleport = Message.fromConfigurationSection(getLangConfiguration().getSection("warp.teleport"), "reload.failure")
+            .build();
+
     /* Reload */
 
     // success

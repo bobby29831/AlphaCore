@@ -1,6 +1,8 @@
 package com.bobby29831.pldev.gui;
 
 import com.bobby29831.pldev.AlphaCore;
+import com.bobby29831.pldev.utils.MessageUtil;
+import com.bobby29831.pldev.utils.SpaceUtil;
 import dev.spaceseries.spaceapi.gui.Gui;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
@@ -11,7 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class SlotPickerGui extends Gui {
 
     public SlotPickerGui() {
-        super(AlphaCore.getInstance(), "Select a slot...", 5);
+        super(AlphaCore.getInstance(), "Select a slot...", 3);
         for (int i = 1; i < 28; i++) {
             ItemStack item;
             if (AlphaCore.getInstance().getTakenSlots().contains(i)) {
@@ -20,23 +22,20 @@ public class SlotPickerGui extends Gui {
                 TextComponent name = Component.text(AlphaCore.getInstance().colorize("&c" + i));
                 meta.displayName(name);
                 item.setItemMeta(meta);
+                setItem(i - 1, item);
             } else {
                 item = new ItemStack(Material.GRAY_STAINED_GLASS_PANE, i);
                 ItemMeta meta = item.getItemMeta();
                 TextComponent name = Component.text(AlphaCore.getInstance().colorize("&f" + i));
                 meta.displayName(name);
                 item.setItemMeta(meta);
+                setItemInteraction(i - 1, item, (p, e) -> {
+                    p.closeInventory();
+                    MessageUtil.getInstance().slotSelected.msg(SpaceUtil.getSender(p), "{0}",  + e.getSlot() + 1 + "");
+                    AlphaCore.getInstance().getInCreationSlots().put(p, e.getSlot());
+                    AlphaCore.getInstance().getEnteringName().add(p);
+                });
             }
-            setItem(i - 1, item);
         }
-        ItemStack blank = new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1);
-        ItemMeta blankMeta = blank.getItemMeta();
-        TextComponent blankName = Component.text(AlphaCore.getInstance().colorize("&r"));
-        blankMeta.displayName(blankName);
-        blank.setItemMeta(blankMeta);
-        for (int i = 28; i < 37; i++) {
-            setItem(i - 1, blank);
-        }
-
     }
 }

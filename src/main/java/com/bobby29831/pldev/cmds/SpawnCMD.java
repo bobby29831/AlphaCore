@@ -30,6 +30,8 @@ public class SpawnCMD extends Command {
             Location location = new Location(AlphaCore.getInstance().getServer().getWorld(file.getString("spawn-world")), file.getDouble("spawn-x"), file.getDouble("spawn-y"), file.getDouble("spawn-z"));
             p.teleport(location);
             MessageUtil.getInstance().spawnTeleport.msg(sender);
+        } else {
+            MessageUtil.getInstance().spawnNotFound.msg(sender);
         }
     }
 }

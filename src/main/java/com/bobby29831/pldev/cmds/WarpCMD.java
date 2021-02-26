@@ -1,6 +1,7 @@
 package com.bobby29831.pldev.cmds;
 
 import com.bobby29831.pldev.AlphaCore;
+import com.bobby29831.pldev.gui.WarpGui;
 import com.bobby29831.pldev.utils.SpaceUtil;
 import dev.spaceseries.spaceapi.command.Command;
 import dev.spaceseries.spaceapi.command.Permissible;
@@ -19,5 +20,6 @@ public class WarpCMD extends Command {
     @Override
     public void onCommand(SpaceCommandSender sender, String label, String... args) {
         Player p = SpaceUtil.getPlayer(sender);
+        new WarpGui().open(p);
     }
 }

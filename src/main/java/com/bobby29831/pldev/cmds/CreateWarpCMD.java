@@ -18,6 +18,7 @@ public class CreateWarpCMD extends Command {
     @Override
     public void onCommand(SpaceCommandSender sender, String label, String... args) {
         Player p = SpaceUtil.getPlayer(sender);
+        AlphaCore.getInstance().getInCreationLocations().put(p, p.getLocation());
         new SlotPickerGui().open(p);
     }
 }

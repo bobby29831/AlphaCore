@@ -1,7 +1,9 @@
 package com.bobby29831.pldev;
 
 import com.bobby29831.pldev.cmds.*;
+import com.bobby29831.pldev.handlers.ChatListener;
 import com.bobby29831.pldev.handlers.JoinListener;
+import com.bobby29831.pldev.utils.Warp;
 import com.bobby29831.pldev.utils.configurables.MessageConfig;
 import com.bobby29831.pldev.utils.configurables.RegularConfig;
 import com.bobby29831.pldev.utils.configurables.WarpsConfig;
@@ -9,6 +11,8 @@ import dev.spaceseries.spaceapi.abstraction.plugin.BukkitPlugin;
 import dev.spaceseries.spaceapi.gui.listener.GuiListener;
 import lombok.Getter;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,6 +35,16 @@ public final class AlphaCore extends JavaPlugin {
     private ArrayList<Integer> takenSlots;
     @Getter
     private BukkitPlugin plugin;
+    @Getter
+    private ArrayList<Player> enteringName;
+    @Getter
+    private HashMap<Player, Location> inCreationLocations;
+    @Getter
+    private HashMap<Player, Integer> inCreationSlots;
+    @Getter
+    private HashMap<Integer, String> inCreationNames;
+    @Getter
+    private HashMap<Integer, Warp> warps;
 
     @Override
     public void onEnable() {
@@ -51,13 +65,16 @@ public final class AlphaCore extends JavaPlugin {
         warpsConfig = new WarpsConfig();
         warpItems = new HashMap<>();
         takenSlots = new ArrayList<>();
+        enteringName = new ArrayList<>();
+        inCreationSlots = new HashMap<>();
+        inCreationNames = new HashMap<>();
+        inCreationLocations = new HashMap<>();
+        warps = new HashMap<>();
 
-        takenSlots.add(3);
-        takenSlots.add(25);
-        takenSlots.add(19);
-        takenSlots.add(14);
+        warpsConfig.readConfig();
 
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
+        getServer().getPluginManager().registerEvents(new ChatListener(), this);
     }
 
     @Override
