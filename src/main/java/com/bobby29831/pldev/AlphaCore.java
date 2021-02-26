@@ -1,14 +1,10 @@
 package com.bobby29831.pldev;
 
-import com.bobby29831.pldev.cmds.CreateWarpCMD;
-import com.bobby29831.pldev.cmds.DevCMD;
-import com.bobby29831.pldev.cmds.SetSpawnCMD;
-import com.bobby29831.pldev.cmds.SpawnCMD;
+import com.bobby29831.pldev.cmds.*;
+import com.bobby29831.pldev.handlers.JoinListener;
 import com.bobby29831.pldev.utils.configurables.MessageConfig;
 import com.bobby29831.pldev.utils.configurables.RegularConfig;
 import com.bobby29831.pldev.utils.configurables.WarpsConfig;
-import com.jonahseguin.drink.CommandService;
-import com.jonahseguin.drink.Drink;
 import dev.spaceseries.spaceapi.abstraction.plugin.BukkitPlugin;
 import dev.spaceseries.spaceapi.gui.listener.GuiListener;
 import lombok.Getter;
@@ -41,15 +37,16 @@ public final class AlphaCore extends JavaPlugin {
         // Plugin startup logic
         plugin = new BukkitPlugin(this);
         instance = this;
-        CommandService drink = Drink.get(this);
         new GuiListener(this);
 
-        drink.register(new DevCMD(), "dev");
-        drink.register(new SetSpawnCMD(), "setspawn");
-        drink.register(new SpawnCMD(), "spawn");
-        drink.register(new CreateWarpCMD(), "createwarp");
-        drink.registerCommands();
-        messageConfig = new MessageConfig();
+        new WarpCMD();
+        new AlphaCMD();
+        new CreateWarpCMD();
+        new SetSpawnCMD();
+        new SpawnCMD();
+        new WarpCMD();
+
+        loadMessageConfig();
         regularConfig = new RegularConfig();
         warpsConfig = new WarpsConfig();
         warpItems = new HashMap<>();
@@ -66,6 +63,10 @@ public final class AlphaCore extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+    public void loadMessageConfig() {
+        messageConfig = new MessageConfig();
     }
 
     public String colorize(String index) {

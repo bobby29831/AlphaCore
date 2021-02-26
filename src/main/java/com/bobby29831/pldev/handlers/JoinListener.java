@@ -1,9 +1,8 @@
-package com.bobby29831.pldev;
+package com.bobby29831.pldev.handlers;
 
-import com.bobby29831.pldev.utils.Message;
+import com.bobby29831.pldev.AlphaCore;
 import dev.spaceseries.spaceapi.config.impl.Configuration;
 import org.bukkit.Location;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,7 +21,6 @@ public class JoinListener implements Listener {
                 }
                 Location location = new Location(AlphaCore.getInstance().getServer().getWorld(file.getString("spawn-world")), file.getDouble("spawn-x"), file.getDouble("spawn-y"), file.getDouble("spawn-z"));
                 p.teleport(location);
-                p.sendMessage(Message.TELEPORTED_TO_SPAWN.get());
             }
         }
     }

@@ -21,15 +21,11 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
-    maven { url 'https://jitpack.io' }
     maven { url 'https://repo.yakovliam.com/snapshots/' }
 }
 
 dependencies {
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
-
-    // drink - cmd lib
-    implementation 'com.github.jonahseguin:drink:-SNAPSHOT'
 
     // spaceapi
     implementation "dev.spaceseries:spaceapi:1.0.8-SNAPSHOT"

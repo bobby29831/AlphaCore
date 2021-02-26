@@ -4,12 +4,12 @@ import com.bobby29831.pldev.AlphaCore;
 import dev.spaceseries.spaceapi.config.impl.Configuration;
 import dev.spaceseries.spaceapi.text.Message;
 
-public class MessageTest {
+public class MessageUtil {
 
     /**
      * Instance of this class
      */
-    private static MessageTest instance;
+    private static MessageUtil instance;
 
     /**
      * Gets instance of messages class
@@ -17,9 +17,9 @@ public class MessageTest {
      *
      * @return messages
      */
-    public static MessageTest getInstance() {
+    public static MessageUtil getInstance() {
         if (instance == null)
-            instance = new MessageTest();
+            instance = new MessageUtil();
         return instance;
     }
 
@@ -33,10 +33,15 @@ public class MessageTest {
 
     /* General */
 
-    // help
-    public Message generalHelp = Message.fromConfigurationSection(getLangConfiguration().getSection("general.help"), "general.help")
+    // Setting Spawn
+    public Message setSpawn = Message.fromConfigurationSection(getLangConfiguration().getSection("spawn.set"), "general.help")
             .build();
 
+    public Message spawnTeleport = Message.fromConfigurationSection(getLangConfiguration().getSection("spawn.teleport"), "general.help")
+            .build();
+
+    public Message spawnNotFound = Message.fromConfigurationSection(getLangConfiguration().getSection("spawn.notfound"), "general.help")
+            .build();
     /* Reload */
 
     // success

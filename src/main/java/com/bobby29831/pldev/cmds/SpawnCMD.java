@@ -1,32 +1,35 @@
 package com.bobby29831.pldev.cmds;
 
 import com.bobby29831.pldev.AlphaCore;
-import com.bobby29831.pldev.utils.Message;
-import com.jonahseguin.drink.annotation.Command;
-import com.jonahseguin.drink.annotation.Sender;
+
+import com.bobby29831.pldev.utils.MessageUtil;
+import com.bobby29831.pldev.utils.SpaceUtil;
+import dev.spaceseries.spaceapi.command.Command;
+import dev.spaceseries.spaceapi.command.PlayersOnly;
+import dev.spaceseries.spaceapi.command.SpaceCommandSender;
 import dev.spaceseries.spaceapi.config.impl.Configuration;
 import org.bukkit.Location;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class SpawnCMD {
+@PlayersOnly
+public class SpawnCMD extends Command {
 
-    @Command(name = "", desc = "Teleports a player to spawn")
-    public void spawnCommand(@Sender CommandSender sender) {
-        if (sender instanceof Player) {
-            Configuration file = AlphaCore.getInstance().getRegularConfig().getConfig();
-            if (file.contains("spawn-x") && file.contains("spawn-y") && file.contains("spawn-z") && file.contains("spawn-world")) {
-                if (AlphaCore.getInstance().getServer().getWorld(file.getString("spawn-world")) == null) {
-                    sender.sendMessage(Message.COULD_NOT_FIND_SPAWN.get());
-                    return;
-                }
-                Location location = new Location(AlphaCore.getInstance().getServer().getWorld(file.getString("spawn-world")), file.getDouble("spawn-x"), file.getDouble("spawn-y"), file.getDouble("spawn-z"));
-                Player p = (Player) sender;
-                p.teleport(location);
-                p.sendMessage(Message.TELEPORTED_TO_SPAWN.get());
+    public SpawnCMD() {
+        super(AlphaCore.getInstance().getPlugin(), "spawn");
+    }
+
+    @Override
+    public void onCommand(SpaceCommandSender sender, String label, String... args) {
+        Player p = SpaceUtil.getPlayer(sender);
+        Configuration file = AlphaCore.getInstance().getRegularConfig().getConfig();
+        if (file.contains("spawn-x") && file.contains("spawn-y") && file.contains("spawn-z") && file.contains("spawn-world")) {
+            if (AlphaCore.getInstance().getServer().getWorld(file.getString("spawn-world")) == null) {
+                MessageUtil.getInstance().spawnNotFound.msg(sender);
+                return;
             }
-        } else {
-            sender.sendMessage(Message.MUST_BE_PLAYER.get("/spawn"));
+            Location location = new Location(AlphaCore.getInstance().getServer().getWorld(file.getString("spawn-world")), file.getDouble("spawn-x"), file.getDouble("spawn-y"), file.getDouble("spawn-z"));
+            p.teleport(location);
+            MessageUtil.getInstance().spawnTeleport.msg(sender);
         }
     }
 }
