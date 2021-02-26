@@ -1,0 +1,9 @@
+disabled-plugin: "&c{0} has been disabled."
+enabled-plugin: "&a{0} has been enabled."
+plugin-not-found: "&4{0} &ccould not be located."
+
+must-be-player: "&cYou must be a player to execute this command: &4{0}"
+
+set-spawn: "&aSpawn has been set to (&f~{0}&a, &f~{1}&a, &f~{2}&a)."
+teleported-to-spawn: "&7Teleporting..."
+could-not-find-spawn: "&cCould not find spawn location."

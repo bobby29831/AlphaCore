@@ -1,0 +1,8 @@
+name: AlphaCore
+version: @version@
+main: com.bobby29831.pldev.AlphaCore
+api-version: 1.16
+authors: [ bobby29831 ]
+description: AlphaCore project for jakedude
+depend:
+  - drink
