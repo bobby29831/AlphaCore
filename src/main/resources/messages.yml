@@ -18,7 +18,7 @@ spawn:
       1:
         tooltip:
           - "&aTry &e/setspawn&a!"
-        action: "SUGGEST_COMMAND"
+        action: "SUGGEST"
         content: "/setspawn"
 
 reload:
@@ -52,6 +52,91 @@ warp:
             - "&aTry &e/warp&a!"
           action: "SUGGEST"
           content: "/warp"
+    entermaterial:
+      text:
+        - "&7Please input a material..."
+    materialinvalid:
+      text:
+        - "&cThe material you entered is invalid."
+        - "&7Cancelled warp creation."
   teleport:
     text:
       - "&7Teleporting to &9{0}&7..."
+
+help:
+  main:
+    text:
+      - "&r"
+      - "$&6&lInteractive Help Menu$"
+      - "&r"
+      - " &8- $&b&lTowny$"
+      - " &8- $&e&lWarps$"
+      - "&r"
+    extras:
+      1:
+        tooltip:
+          - "&7You can &eclick &7each of the categories below"
+          - "&7to find out more info about the topic!"
+      2:
+        tooltip:
+          - "&b/help towny"
+        action: "RUN_COMMAND"
+        content: "/help towny"
+      3:
+        tooltip:
+          - "&e/help warps"
+        action: "RUN_COMMAND"
+        content: "/help warps"
+  towny:
+    text:
+      - "&b&lTowny Help &8- $&c&l[BACK]$"
+      - "&r"
+      - "&7To get started with towny, first you must leave the city, which I recommend doing with $&e/rtp$ &7or by visiting the portal near $&e/spawn$&7. Once you have left spawn, you will be able to access $&e/town help$ &7which will help you with most basic commands."
+      - "&r"
+      - "&7Arguably the most important command to start out with is $&e/town create [name]$ &7which will create a town for you, but please take note that it costs &c$250 &7to make a Town."
+      - "&r"
+      - "&7If you are in need of further assistance, contact a moderator."
+    extras:
+      1:
+        tooltip:
+         - "&cReturn to the main help page."
+        action: "RUN_COMMAND"
+        content: "/help"
+      2:
+        tooltip:
+          - "&e/rtp"
+        action: "SUGGEST"
+        content: "/rtp"
+      3:
+        tooltip:
+          - "&e/spawn"
+        action: "SUGGEST"
+        content: "/spawn"
+      4:
+        tooltip:
+          - "&e/town help"
+        action: "SUGGEST"
+        content: "/town help"
+      5:
+        tooltip:
+          - "&e/town create [name]"
+        action: "SUGGEST"
+        content: "/town create [name]"
+  warps:
+    text:
+      - "&e&lWarps Help &8- $&c&l[BACK]$"
+      - "&r"
+      - "&7We use a GUI to make warps simple and easy to use for everyone. You can open it with $&d/warp$&7. The Warp GUI has two sections as of now, the section on the left being for general warps, and the section on the right is for shop warps."
+      - "&r"
+      - "&7If you are in need of further assistance, contact a moderator."
+    extras:
+      1:
+        tooltip:
+          - "&cReturn to the main help page."
+        action: "RUN_COMMAND"
+        content: "/help"
+      2:
+        tooltip:
+          - "&d/warp"
+        action: "SUGGEST"
+        content: "/warp"

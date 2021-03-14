@@ -53,6 +53,22 @@ public class MessageUtil {
             .build();
     public Message warpTeleport = Message.fromConfigurationSection(getLangConfiguration().getSection("warp.teleport"), "reload.failure")
             .build();
+    public Message materialInvalid = Message.fromConfigurationSection(getLangConfiguration().getSection("warp.create.materialinvalid"), "reload.failure")
+            .build();
+    public Message enterMaterial = Message.fromConfigurationSection(getLangConfiguration().getSection("warp.create.entermaterial"), "reload.failure")
+            .build();
+
+    // Item Info
+    public Message itemInfo = Message.fromConfigurationSection(getLangConfiguration().getSection("item"), "reload.failure")
+            .build();
+
+    // Help
+    public Message helpMain = Message.fromConfigurationSection(getLangConfiguration().getSection("help.main"), "reload.failure")
+            .build();
+    public Message helpTowny = Message.fromConfigurationSection(getLangConfiguration().getSection("help.towny"), "reload.failure")
+            .build();
+    public Message helpWarps = Message.fromConfigurationSection(getLangConfiguration().getSection("help.warps"), "reload.failure")
+            .build();
 
     /* Reload */
 

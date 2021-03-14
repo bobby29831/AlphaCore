@@ -1,6 +1,7 @@
 package com.bobby29831.pldev;
 
 import com.bobby29831.pldev.cmds.*;
+import com.bobby29831.pldev.cmds.help.HelpCMD;
 import com.bobby29831.pldev.handlers.ChatListener;
 import com.bobby29831.pldev.handlers.JoinListener;
 import com.bobby29831.pldev.utils.Warp;
@@ -38,6 +39,8 @@ public final class AlphaCore extends JavaPlugin {
     @Getter
     private ArrayList<Player> enteringName;
     @Getter
+    private ArrayList<Player> enteringMaterial;
+    @Getter
     private HashMap<Player, Location> inCreationLocations;
     @Getter
     private HashMap<Player, Integer> inCreationSlots;
@@ -59,6 +62,8 @@ public final class AlphaCore extends JavaPlugin {
         new SetSpawnCMD();
         new SpawnCMD();
         new WarpCMD();
+        new GiveStarterKit();
+        new HelpCMD();
 
         loadMessageConfig();
         regularConfig = new RegularConfig();
@@ -66,6 +71,7 @@ public final class AlphaCore extends JavaPlugin {
         warpItems = new HashMap<>();
         takenSlots = new ArrayList<>();
         enteringName = new ArrayList<>();
+        enteringMaterial = new ArrayList<>();
         inCreationSlots = new HashMap<>();
         inCreationNames = new HashMap<>();
         inCreationLocations = new HashMap<>();

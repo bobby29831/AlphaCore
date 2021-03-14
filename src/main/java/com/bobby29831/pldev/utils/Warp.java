@@ -3,8 +3,6 @@ package com.bobby29831.pldev.utils;
 
 import com.bobby29831.pldev.AlphaCore;
 import lombok.Getter;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -30,8 +28,8 @@ public class Warp {
     public void createItem() {
         ItemStack item = new ItemStack(this.material, 1);
         ItemMeta meta = item.getItemMeta();
-        TextComponent nameComponent = Component.text(AlphaCore.getInstance().colorize("&9&l" + name + " &7(Left Click)"));
-        meta.displayName(nameComponent);
+        String newName = AlphaCore.getInstance().colorize("&9&l" + name + " &7(Left Click)");
+        meta.setDisplayName(newName);
         item.setItemMeta(meta);
         AlphaCore.getInstance().getWarpItems().put(this.slot, item);
         AlphaCore.getInstance().getTakenSlots().add(this.slot + 1);
